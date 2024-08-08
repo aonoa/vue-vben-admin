@@ -22,17 +22,11 @@ const modelValue = defineModel<BuiltinThemeType>({ default: 'default' });
 const themeColorPrimary = defineModel<string>('themeColorPrimary');
 
 const inputValue = computed(() => {
-  return new TinyColor(themeColorPrimary.value).toHexString();
+  return new TinyColor(themeColorPrimary.value || '').toHexString();
 });
 
 const builtinThemePresets = computed(() => {
-  return [
-    // {
-    //   color: 'hsl(231 98% 65%)',
-    //   type: 'default',
-    // },
-    ...BUILT_IN_THEME_PRESETS,
-  ];
+  return [...BUILT_IN_THEME_PRESETS];
 });
 
 function typeView(name: BuiltinThemeType) {
