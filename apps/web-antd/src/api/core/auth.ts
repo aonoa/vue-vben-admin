@@ -32,9 +32,17 @@ export async function loginApi(data: AuthApi.LoginParams) {
  * 刷新accessToken
  */
 export async function refreshTokenApi() {
-  return requestClient.post<AuthApi.RefreshTokenResult>('/auth/refresh', {
-    withCredentials: true,
-  });
+  return requestClient.post<AuthApi.RefreshTokenResult>(
+    '/auth/refresh',
+    {
+      withCredentials: true,
+    },
+    {
+      headers: {
+        'X-Action': 'refreshToken',
+      },
+    },
+  );
 }
 
 /**

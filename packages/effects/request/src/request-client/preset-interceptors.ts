@@ -25,6 +25,10 @@ export const authenticateResponseInterceptor = ({
       if (response?.status !== 401) {
         throw error;
       }
+      if (config.headers['X-Action'] === 'refreshToken') {
+        await doReAuthenticate();
+        throw error;
+      }
       // 判断是否启用了 refreshToken 功能
       // 如果没有启用或者已经是重试请求了，直接跳转到重新登录
       if (!enableRefreshToken || config.__isRetryRequest) {
