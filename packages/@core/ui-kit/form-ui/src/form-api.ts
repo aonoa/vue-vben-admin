@@ -36,6 +36,7 @@ function getDefaultState(): VbenFormProps {
     showCollapseButton: false,
     showDefaultActions: true,
     submitButtonOptions: {},
+    submitOnChange: false,
     submitOnEnter: false,
     wrapperClass: 'grid-cols-1',
   };
@@ -185,7 +186,7 @@ export class FormApi {
     const fieldSet = new Set(fields);
     const schema = this.state?.schema ?? [];
 
-    const filterSchema = schema.filter((item) => fieldSet.has(item.fieldName));
+    const filterSchema = schema.filter((item) => !fieldSet.has(item.fieldName));
 
     this.setState({
       schema: filterSchema,
