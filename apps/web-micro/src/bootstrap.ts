@@ -19,15 +19,15 @@ import App from './app.vue';
 import { router } from './router';
 
 async function bootstrap(namespace: string) {
-  // 初始化 micro-app
+  // Initialize micro-app
   microApp.start({
-    // 配置项
+    // Custom element tag name
     tagName: 'micro-app',
-    // 是否开启沙箱
+    // Use iframe sandbox mode
     iframe: false,
-    // 是否禁用内存路由
+    // Disable memory router
     'disable-memory-router': false,
-    // 是否禁用沙箱
+    // Disable sandbox
     'disable-sandbox': false,
   });
 
